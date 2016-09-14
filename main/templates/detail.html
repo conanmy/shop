@@ -1,1 +1,7 @@
 <h1>{{ product.productName }}</h1>
+<form method="post" action="/cart/">
+{% csrf_token %}
+<input type="text" name="product_id" value="{{ product.id }}" />
+<input type="text" name="quantity" value="1" />
+<input type="submit" value="Submit" />
+</form>

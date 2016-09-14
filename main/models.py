@@ -22,6 +22,12 @@ class Product(models.Model):
     productPicture2 = models.CharField(max_length=100)
     productPicture3 = models.CharField(max_length=100)
 
+class Cart(models.Model):
+    id = models.AutoField(primary_key=True)
+    user_id = models.IntegerField()
+    product_id = models.IntegerField()
+    quantity = models.IntegerField()
+
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
     user_id = models.IntegerField()
