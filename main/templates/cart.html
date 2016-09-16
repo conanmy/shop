@@ -1,0 +1,9 @@
+{% if cartItems %}
+    <ul>
+    {% for item in cartItems %}
+        <li>{{ item.product_id }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}
