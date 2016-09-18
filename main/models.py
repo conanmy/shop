@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Product(models.Model):
@@ -24,13 +25,13 @@ class Product(models.Model):
 
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.IntegerField()
-    product_id = models.IntegerField()
+    user = models.ForeignKey(User)
+    product = models.ForeignKey(Product)
     quantity = models.IntegerField()
 
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.IntegerField()
+    user = models.ForeignKey(User)
     date = models.DateField()
     buyerName = models.CharField(max_length=100)
     buyerEmail = models.CharField(max_length=100)
@@ -39,8 +40,8 @@ class Order(models.Model):
 
 class Record(models.Model):
     id = models.AutoField(primary_key=True)
-    order_id = models.IntegerField()
-    product_id = models.IntegerField()
+    order = models.ForeignKey(Order)
+    product = models.ForeignKey(Product)
     productName = models.CharField(max_length=100)
     quantity = models.IntegerField()
     retailPrice = models.BigIntegerField()

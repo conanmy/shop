@@ -1,7 +1,7 @@
 {% if cartItems %}
     <ul>
     {% for item in cartItems %}
-        <li>{{ item.product_id }}</li>
+        <li>{{ item.product.productName }}*{{ item.quantity }}</li>
     {% endfor %}
     </ul>
 {% else %}
