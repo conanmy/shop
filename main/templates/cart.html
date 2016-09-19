@@ -1,9 +1,20 @@
-{% if cartItems %}
-    <ul>
-    {% for item in cartItems %}
-        <li>{{ item.product.productName }}*{{ item.quantity }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No items are available.</p>
-{% endif %}
+<form method="post" action="/order/">
+    {% csrf_token %}
+    {% if cartItems %}
+        <ul>
+            {% for item in cartItems %}
+                <li>
+                    {{ item.product.productName }}*
+                    <input name="cart_item-{{ item.id }}" value="{{ item.quantity }}" />
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items are available.</p>
+    {% endif %}
+    <p>Name:<input type="text" name="buyerName" /></p>
+    <p>Email:<input type="text" name="buyerEmail" /></p>
+    <p>Phone:<input type="text" name="buyerPhoneNumber" /></p>
+    <p>Address:<input type="text" name="buyerAddress" /></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>

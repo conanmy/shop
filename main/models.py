@@ -32,7 +32,7 @@ class Cart(models.Model):
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
     buyerName = models.CharField(max_length=100)
     buyerEmail = models.CharField(max_length=100)
     buyerPhoneNumber = models.CharField(max_length=100)
