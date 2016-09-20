@@ -43,9 +43,9 @@ def order(request):
     )
     order.save()
     cart_item_id_prefix = 'cart_item-'
-    for attr, value in request.POST:
+    for attr, value in request.POST.items():
         if attr.startswith(cart_item_id_prefix):
-            product = Product.objects.get(id=attr[len(cart_item_id_prefix):])
+            product = Product.objects.get(id=int(attr[len(cart_item_id_prefix):]))
             record = Record(
                 order=order,
                 product=product,
@@ -54,5 +54,5 @@ def order(request):
                 quantity=value
             )
             record.save()
-    #return render(request, 'cart.html', {'cartItems': cartItems})
+    return render(request, 'order_success.html')
 

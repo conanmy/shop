@@ -5,7 +5,7 @@
             {% for item in cartItems %}
                 <li>
                     {{ item.product.productName }}*
-                    <input name="cart_item-{{ item.id }}" value="{{ item.quantity }}" />
+                    <input name="cart_item-{{ item.product.id }}" value="{{ item.quantity }}" />
                 </li>
             {% endfor %}
         </ul>
