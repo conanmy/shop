@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Store Details</title>
+<link rel="stylesheet" href="styles/details.css" />
+<link rel="stylesheet" href="styles/header.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/footer.css" />
+</head>
+<body>
+<div class="header">
+<div class="header__details">
+<div class="header__logo"></div>
+<div class="header__login-register">
+<a class="header__login-register__login" href="file:///D:/store/login.html">Login</a>
+<span class="header__login-register__vline">|</span>
+<a class="header__login-register__register" href="file:///D:/store/register.html">Register</a>
+</div>
+<a class="header__username" href="file:///D:/store/user.html">Username</a>
+<a class="header__mycart" href="file:///D:/store/cart.html">My Cart</a>
+</div>
+</div>
+<div class="content">
+<div class="product">
+	<div class="product__images">
+		<div class="product__images__big"><img id="bigImg" src="images/details/big-image.png" /></div>
+		<div class="product__images__small" id="productImagesSmall">
+			<img src="images/details/small-image.png" />
+			<img src="images/details/small-image-a.png" />
+			<img src="images/details/small-image-b.png" />
+			<img src="images/details/small-image-c.png" />
+		</div>
+	</div>
+	<div class="product__property">
+		<div class="product__property__name">Aveeno Baby Cream</div>
+		<div class="product__property__sketch">Baby,Oats,Moisten long,Nutrition</div>
+		<div id="attribute" class="product__property__price">Unit price:<span>$ 10.00</span></div>
+		<div id="attribute" class="product__property__category">Category: <img src="images/details/small-image-a.png" /></div>
+		<div id="attribute" class="product__property__size">Size:<span>141g</span></div>
+		<div id="attribute" class="product__property__delivery">Postage: $ 7.00</div>
+		<div id="attribute" class="product__property__quantity">Quantity:<input type="number" min="1" step="1"><em>(Stock: 89)</em></div>
+		<div class="product__property__purchase"><input type="button" value="Add to Cart">
+		<input class="product__property__purchase__service" type="image" src="images/details/service.png" alt="Service"></div>
+	</div>
+</div>
+<div class="description">
+	<div class="description__title">Description</div>
+	<div class="description__sketch">
+		<div class="description__sketch__brand">Brand: <strong>Aveeno</strong></div>
+		<div class="description__sketch__origin">Origin: <strong>American</strong></div>
+	</div>
+	<div class="description__details">
+		<div class="description__details__summary"><img src="images/details/summary.png"></div>
+		<div class="description__details__particular">
+			<p>Parameters</p>
+			<img src="images/details/parameters.png" />
+			<p>Styles</p>
+			<img src="images/details/styles.png" />
+			<p>Method</p>
+			<img src="images/details/method.png" />
+		</div>
+	</div>
+</div>
+</div>
+<div class="footer"><em>Store</em></div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+document.getElementById('productImagesSmall').onmouseover = function(event) {
+	// console.log(event);
+	if (event.target.tagName == 'IMG') {
+		console.log(event.target.src);
+		document.getElementById('bigImg').src = event.target.src.replace('small', 'big');
+	}
+};
+</script>
+</body>
+</html>

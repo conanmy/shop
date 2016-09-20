@@ -1,0 +1,123 @@
+.header__login-register__login {
+	text-decoration: none;
+	color: black;
+}
+.header__login-register__register {
+	text-decoration: none;
+	color: black;
+}
+.product {
+	width: 1050px;
+	margin: 20px auto;
+	padding: 20px;
+	border: 1px solid #efefef;
+	overflow: auto;
+}
+.product__images {
+	float: left;
+	width: 399px;
+	margin-left: 20px;
+}
+.product__images__big {
+	height: 399px;
+	border: 1px solid #efefef;
+}
+.product__images__small {	
+	width: 399px;
+	margin-top: 5px;
+	overflow: auto;
+}
+.product__images__small img {
+	width: 52px;
+	height: 52px;
+	border: 2px solid white;
+	display: inline-block;	
+}
+.product__images__small img:hover {
+	border: 2px solid #ed145b;
+}
+.product__property {
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+	font-size: 15px;
+	margin-top: 10px;
+	margin-left: 70px;
+	float: left;
+}
+.product__property__name {
+	font-size: 20px;
+	color: #ed145b;
+	font-weight: 20;
+}
+.product__property__sketch {
+	margin-top: 30px;
+	color: grey;
+}
+#attribute {
+	margin-top: 20px;
+}
+.product__property__price span {
+	color: #ed145b;
+	font-size: 25px;
+	margin-left: 20px;
+}
+.product__property__category img {
+	display: block;
+	margin-left: 80px;
+}
+.product__property__size span {
+	margin-left: 20px;
+}
+.product__property__quantity input {
+	display: inline-block;
+	margin-left: 20px;
+	width: 60px;
+	height: 20px;
+}
+.product__property__quantity em {
+	margin-left: 10px;
+}
+.product__property__purchase {
+	margin-top: 30px;
+}
+.product__property__purchase input {
+	vertical-align: middle;
+}
+.product__property__purchase__service {
+	margin-left: 30px;
+}
+.description {
+	width: 1090px;
+	margin: 0 auto;
+}
+.description__title {
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+	background: #f2f2f2;
+	color: #ed145b;
+	font-size: 35px;
+}
+.description__sketch {
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+	color: grey;
+	padding: 5px;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+}
+.description__sketch__origin {
+	margin-top: 5px;
+}
+.description__details {	
+	width: 745px;
+	margin: 0 auto;
+}
+.description__details__summary {
+	margin-top: 10px;
+}
+.description__details__particular {
+	padding: 0px;
+}
+.description__details__particular p {
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+	font-size: 25px;
+	color: #ed145b;
+	text-decoration: underline;
+}

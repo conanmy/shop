@@ -1,0 +1,49 @@
+.header__login-register__login {
+	text-decoration: none;
+	color: black;
+}
+.header__login-register__register {
+	text-decoration: none;
+	color: #ed145b;
+}
+.content {
+	width: 1090px;
+	margin: 0 auto;
+	overflow: auto;
+}
+img {
+	float: left;
+	width: 450px;
+	margin: 150px 30px 50px 50px;
+}
+#content {
+	font-size: 15px;
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+	float: right;
+	margin: 100px 50px;
+	padding: 50px 20px;
+	border: 1px solid white;
+	background: white;
+	box-shadow: 0px 0px 20px #e0e0e0;
+}
+#content:hover {
+	border: 1px solid #ed145b;
+}
+#content span {
+	display: block;
+	font-size: 10px;
+	color: lightgrey;
+	margin-top: 10px;
+}
+p {
+	margin-bottom: 20px;
+}
+.content__info {
+	width: 200px;
+	float: right;
+}
+.content__submit {
+	width: 360px;
+	background: #ed145b;
+	height: 30px;
+}

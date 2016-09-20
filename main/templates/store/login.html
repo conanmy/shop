@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Store Login</title>
+<link rel="stylesheet" href="styles/login.css" />
+<link rel="stylesheet" href="styles/header.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/footer.css" />
+</head>
+<body>
+<div class="header">
+<div class="header__details">
+<div class="header__logo"></div>
+<div class="header__login-register">
+<a class="header__login-register__login" href="file:///D:/store/login.html">Login</a>
+<span class="header__login-register__vline">|</span>
+<a class="header__login-register__register" href="file:///D:/store/register.html">Register</a>
+</div>
+<a class="header__username" href="file:///D:/store/user.html">Username</a>
+<a class="header__mycart" href="file:///D:/store/cart.html">My Cart</a>
+</div>
+</div>
+<div class="content">
+<img src="images/login/advertisement.png" alt="Advertisement" />
+<div id="content">
+<form method="post" action="/login/">
+<input type="hidden" name="csrfmiddlewaretoken" value="5kqUFiaQp21Vybm3ADzASuALBzbXCFvXF02zyPrBHGugqjGYhncQvZV5hBsbyXGv">
+<table>
+<tbody><tr>
+    <td><label for="id_username">Username:</label></td>
+    <td><input autofocus="" id="id_username" maxlength="254" name="username" type="text" required=""></td>
+</tr>
+<tr>
+    <td><label for="id_password">Password:</label></td>
+    <td><input id="id_password" name="password" type="password" required=""></td>
+</tr>
+</tbody>
+</table>
+<input type="submit" value="login">
+<input type="hidden" name="next" value="">
+</form>
+<p>
+<a href="/password_reset/">Lost password?</a></p>
+</div>
+</div>
+<div class="footer"><em>Store</em></div>
+</body>
+</html>
