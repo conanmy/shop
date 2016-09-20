@@ -1,9 +1,43 @@
-{% if productList %}
-    <ul>
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Store List</title>
+<link rel="stylesheet" href="/styles/list.css" />
+<link rel="stylesheet" href="/styles/header.css" />
+<link rel="stylesheet" href="/styles/base.css" />
+<link rel="stylesheet" href="/styles/footer.css" />
+</head>
+<body>
+<div class="header">
+<div class="header__details">
+<div class="header__logo"></div>
+<div class="header__login-register">
+<a class="header__login-register__login" href="/login">Login</a>
+<span class="header__login-register__vline">|</span>
+<a class="header__login-register__register" href="/register">Register</a>
+</div>
+<a class="header__username" href="file:///D:/store/user.html">Username</a>
+<a class="header__mycart" href="file:///D:/store/cart.html">My Cart</a>
+</div>
+</div>
+<div class="content">
+<div class="search">
+<input class="search__searchbox" type="search" />
+</div>
+<div class="list">
     {% for product in productList %}
-        <li><a href="{% url 'detail' product.id %}">{{ product.productName }}</a></li>
+        <a class="list__product" href="{% url 'detail' product.id %}">
+            <img src="{{ product.productPicture1 }}">
+            <div class="list__product__name">{{ product.productName }}</div>
+            <div class="list__product__pr-st">
+                <span class="list__product__pr-st__price">$ {{ product.retailPrice }}</span>
+                <span class="list__product__pr-st__stock"><em>Stock: </em>{{ product.quantity }}</span>
+            </div>
+            <div class="list__product__description"><p>{{ product.description }}</p></div>
+        </a>
     {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+</div>
+</div>
+<div class="footer"><em>Store</em></div>
+</body>
+</html>
