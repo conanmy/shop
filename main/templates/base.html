@@ -1,22 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}My amazing site{% endblock %}</title>
+<title>{% block title %}Store List{% endblock %}</title>
+<link rel="stylesheet" href="/styles/list.css" />
+<link rel="stylesheet" href="/styles/header.css" />
+<link rel="stylesheet" href="/styles/base.css" />
+<link rel="stylesheet" href="/styles/footer.css" />
 </head>
-
 <body>
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog/">Blog</a></li>
-        </ul>
-        {% endblock %}
-    </div>
-
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+<div class="header">
+<div class="header__details">
+<div class="header__logo"></div>
+<div class="header__login-register">
+<a class="header__login-register__login" href="/login">Login</a>
+<span class="header__login-register__vline">|</span>
+<a class="header__login-register__register" href="/register">Register</a>
+</div>
+<a class="header__username" href="/user">Username</a>
+<a class="header__mycart" href="/cart">My Cart</a>
+</div>
+</div>
+<div class="content">{% block content %}{% endblock %}</div>
+<div class="footer"><em>Store</em></div>
 </body>
 </html>
