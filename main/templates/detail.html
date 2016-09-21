@@ -1,7 +1,78 @@
-<h1>{{ product.productName }}</h1>
-<form method="post" action="/cart/">
-{% csrf_token %}
-<input type="text" name="product_id" value="{{ product.id }}" />
-<input type="text" name="quantity" value="1" />
-<input type="submit" value="Submit" />
-</form>
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static "styles/detail.css" %}" />
+
+<div class="product">
+    <div class="product__images">
+        <div class="product__images__big"><img id="bigImg" src="{{ product.productPicture1 }}" /></div>
+        <div class="product__images__small" id="productImagesSmall">
+            <img src="{{ product.productPicture1 }}" />
+            <img src="{{ product.productPicture2 }}" />
+            <img src="{{ product.productPicture3 }}" />
+        </div>
+    </div>
+    <div class="product__property">
+        <div class="product__property__name">{{ product.productName }}</div>
+        <div class="product__property__sketch">{{ product.description }}</div>
+        <div id="attribute" class="product__property__price">
+            Unit price:<span>$ {{ product.retailPrice }}</span>
+        </div>
+        <div id="attribute" class="product__property__category">
+            Category: {{ product.category }}
+        </div>
+        <div id="attribute" class="product__property__size">
+            No.:<span>{{ product.productNo }}</span>
+        </div>
+        <div id="attribute" class="product__property__delivery">Postage: $ 7.00</div>
+        <div id="attribute" class="product__property__quantity">
+            Quantity:<input type="number" min="1" step="1"><em>(Stock: {{ product.quantity }})</em></div>
+        <form method="post" action="/cart/">
+            {% csrf_token %}
+            <input type="text" name="product_id" value="{{ product.id }}" />
+            <input type="text" name="quantity" value="1" />
+            <input type="submit" value="Submit" />
+        </form>
+        <div class="product__property__purchase"><input type="button" value="Add to Cart">
+        <input class="product__property__purchase__service" type="image" src="images/details/service.png" alt="Service"></div>
+    </div>
+</div>
+<div class="description">
+    <div class="description__title">Description</div>
+    <div class="description__sketch">
+        <div class="description__sketch__brand">
+            Brand: <strong>{{ product.productName }}</strong>
+        </div>
+        <div class="description__sketch__origin">
+            Origin: <strong>{{ product.location }}</strong>
+        </div>
+    </div>
+    <div class="description__details">
+        <div class="description__details__summary">
+            <img src="{{ product.productPicture1 }}">
+        </div>
+        <div class="description__details__particular">
+            <p>Parameters</p>
+            <img src="{{ product.productPicture1 }}" />
+            <p>Styles</p>
+            <img src="{{ product.productPicture2 }}" />
+            <p>Method</p>
+            <img src="{{ product.productPicture3 }}" />
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+document.getElementById('productImagesSmall').onmouseover = function(event) {
+    // console.log(event);
+    if (event.target.tagName == 'IMG') {
+        console.log(event.target.src);
+        document.getElementById('bigImg').src = event.target.src;
+    }
+};
+</script>

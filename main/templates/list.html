@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static "styles/list.css" %}" />
 
 <div class="search">
 <input class="search__searchbox" type="search" />

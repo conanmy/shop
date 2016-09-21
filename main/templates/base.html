@@ -2,10 +2,10 @@
 <html>
 <head>
 <title>{% block title %}Store List{% endblock %}</title>
-<link rel="stylesheet" href="/styles/list.css" />
-<link rel="stylesheet" href="/styles/header.css" />
-<link rel="stylesheet" href="/styles/base.css" />
-<link rel="stylesheet" href="/styles/footer.css" />
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/header.css" %}" />
+<link rel="stylesheet" href="{% static "styles/base.css" %}" />
+<link rel="stylesheet" href="{% static "styles/footer.css" %}" />
 </head>
 <body>
 <div class="header">

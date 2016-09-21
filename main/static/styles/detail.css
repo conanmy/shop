@@ -15,15 +15,18 @@
 }
 .product__images {
 	float: left;
-	width: 399px;
+	width: 400px;
 	margin-left: 20px;
 }
 .product__images__big {
-	height: 399px;
+	height: 400px;
 	border: 1px solid #efefef;
 }
+.product__images__big img {
+	height: 400px;
+}
 .product__images__small {	
-	width: 399px;
+	width: 400px;
 	margin-top: 5px;
 	overflow: auto;
 }
