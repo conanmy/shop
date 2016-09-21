@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% load static %}
 
+{% load static %}
 <link rel="stylesheet" href="{% static "styles/detail.css" %}" />
 
 <div class="product">
@@ -27,16 +27,14 @@
             No.:<span>{{ product.productNo }}</span>
         </div>
         <div id="attribute" class="product__property__delivery">Postage: $ 7.00</div>
-        <div id="attribute" class="product__property__quantity">
-            Quantity:<input type="number" min="1" step="1"><em>(Stock: {{ product.quantity }})</em></div>
         <form method="post" action="/cart/">
             {% csrf_token %}
-            <input type="text" name="product_id" value="{{ product.id }}" />
-            <input type="text" name="quantity" value="1" />
-            <input type="submit" value="Submit" />
+            <input type="hidden" name="product_id" value="{{ product.id }}" />
+            <div id="attribute" class="product__property__quantity">
+            Quantity:<input type="number" name="quantity" value="1" min="1" step="1"><em>(Stock: {{ product.quantity }})</em></div>
+            <div class="product__property__purchase"><input type="submit" value="Add to Cart">
         </form>
-        <div class="product__property__purchase"><input type="button" value="Add to Cart">
-        <input class="product__property__purchase__service" type="image" src="images/details/service.png" alt="Service"></div>
+        <input class="product__property__purchase__service" type="image" src="{% static "images/details/service.png" %}" alt="Service"></div>
     </div>
 </div>
 <div class="description">

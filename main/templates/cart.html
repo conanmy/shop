@@ -1,20 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/cart.css" %}" />
+
 <form method="post" action="/order/">
     {% csrf_token %}
-    {% if cartItems %}
-        <ul>
-            {% for item in cartItems %}
-                <li>
-                    {{ item.product.productName }}*
-                    <input name="cart_item-{{ item.product.id }}" value="{{ item.quantity }}" />
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No items are available.</p>
-    {% endif %}
-    <p>Name:<input type="text" name="buyerName" /></p>
-    <p>Email:<input type="text" name="buyerEmail" /></p>
-    <p>Phone:<input type="text" name="buyerPhoneNumber" /></p>
-    <p>Address:<input type="text" name="buyerAddress" /></p>
-    <p><input type="submit" value="Submit" /></p>
+    <div class="step">
+        <div class="step__title"><a href="/product">Store</a></div>
+        <div class="step__tag">
+        <img src="{% static "images/cart/step.png" %}" />  
+            <span class="step__tag__cart">My cart</span>
+            <span>Confirm</span>
+            <span>Payment</span>
+            <span>Choose</span>
+        </div>
+    </div>
+    <div class="cart">
+        <div class="cart__title">
+            <span class="cart__title__product">Product</span>
+            <span class="cart__title__operation">Operation</span>
+            <span class="cart__title__property">
+                <span>Unit Price($)</span>
+                <span>Quantity</span>
+                <span>Amount Price($)</span>
+            </span>
+        </div>
+        <div id="cartCommodity" class="cart__commodity">
+        {% for item in cartItems %}
+            <div id="cartCommodityProduct{{ forloop.counter0 }}" class="cart__commodity__product">
+                <a class="cart__commodity__product__image" href="/product/{{item.product.id}}"><img src="{% static "images/cart/sketch.png" %}"></a>
+                <a class="cart__commodity__product__sketch" href="/product/{{item.product.id}}"><strong>{{ item.product.productName }}</strong><br />{{ item.product.description }}</a>
+                <span class="cart__commodity__product__delete"><input id="productDelete{{ forloop.counter0 }}" type="image" src="{% static "images/cart/delete.png" %}"></span>
+                <div class="cart__commodity__product__property">        
+                    <div id="productPropUnit{{ forloop.counter0 }}" class="cart__commodity__product__property__unit">{{ item.product.retailPrice }}</div>
+                    <div class="cart__commodity__product__property__count">
+                    <input id="countButtonMinus{{ forloop.counter0 }}" class="cart__commodity__product__property__minus" type="button" value="-" />
+                    <input id="countButtonValue{{ forloop.counter0 }}" class="cart__commodity__product__property__number" name="cart_item-{{ item.product.id }}" value="{{ item.quantity }}" />
+                    <input id="countButtonPlus{{ forloop.counter0 }}" class="cart__commodity__product__property__plus" type="button" value="+" />
+                    </div>
+                    <div id="productPropCalcuate{{ forloop.counter0 }}" class="cart__commodity__product__property__calculate">{{ item.product.retailPrice }}</div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="cart__checkout">
+            <div class="cart__checkout__operation">
+            <a class="cart__checkout__operation__continue" href="file:///D:/store/list.html">Continue Shopping</a>  
+            </div>
+            <div class="cart__checkout__sum">
+                <span>Quantity: <strong id="sumQuantity">3</strong></span>
+                <span>Total: <em>$</em><strong id="sumTotal">30.00</strong></span>
+                <input type="button" value="Pay" />
+            </div>
+        </div>
+    </div>
+    <div>
+        <p>Name:<input type="text" name="buyerName" /></p>
+        <p>Email:<input type="text" name="buyerEmail" /></p>
+        <p>Phone:<input type="text" name="buyerPhoneNumber" /></p>
+        <p>Address:<input type="text" name="buyerAddress" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </div>
 </form>
+<script>
+var minusButtonArray = document.getElementsByClassName('cart__commodity__product__property__minus');
+var itemNumber = minusButtonArray.length;
+for (var i = 0; i < itemNumber; i ++) {
+    document.getElementById('countButtonValue' + i).oninput = function(event) {
+        var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonValue'.length)));  
+        var inputString = valueInput.value; 
+        var number = '';
+        for (var i = 0; i < inputString.length; i ++) {         
+            if (!isNaN(inputString.charAt(i))) {                            
+                number = number + inputString.charAt(i);
+            }                       
+        }
+            document.getElementById('countButtonValue' + (event.target.id.slice('countButtonValue'.length))).value = number;
+            calculateSum();
+            calculateQuantity();
+            calculateTotal();           
+    }
+}
+for (var i = 0; i < itemNumber; i ++) {
+    document.getElementById('countButtonMinus' + i).onclick = function(event) {     
+        var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonMinus'.length)));
+        if (valueInput.value >= 2) {
+            valueInput.value = valueInput.value - 1;
+            calculateSum();
+            calculateQuantity();
+            calculateTotal();           
+        }       
+    };
+}
+for (var i = 0; i < itemNumber; i ++) {
+    document.getElementById('countButtonPlus' + i).onclick = function(event) {
+        var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonPlus'.length)));
+        valueInput.value = valueInput.value - 0 + 1;
+        calculateSum();
+        calculateQuantity();
+        calculateTotal();       
+    };
+}
+var parent = document.getElementById('cartCommodity');
+for (var i = 0; i < itemNumber; i ++) { 
+    document.getElementById('productDelete' + i).onclick = function(event) {        
+        var child = document.getElementById('cartCommodityProduct'+ (event.target.id.slice('productDelete'.length)));       
+        parent.removeChild(child);
+        calculateQuantity();
+        calculateTotal();
+        
+    };
+}
+function calculateSum() {
+    for (i = 0; i < itemNumber; i ++) {
+        if (document.getElementById('productPropCalcuate' + i)) {
+            var valueInput = document.getElementById('countButtonValue' + i);
+            var productUnit = document.getElementById('productPropUnit' + i);
+            var productSum = document.getElementById('productPropCalcuate' + i);    
+            productSum.innerHTML = (valueInput.value * productUnit.innerHTML).toFixed(2);
+        }
+    }
+}
+function calculateQuantity() {
+    var quantity = 0;
+    for (var i = 0; i < itemNumber; i ++) {
+        if (document.getElementById('countButtonValue' + i)) {
+            quantity = quantity + (document.getElementById('countButtonValue' + i).value - 0);
+        }
+    }
+    document.getElementById('sumQuantity').innerHTML = quantity;
+}
+function calculateTotal() {
+    var total = 0;
+    for (i = 0; i < itemNumber; i ++) {
+        if (document.getElementById('productPropCalcuate' + i)) {
+            total = total + (document.getElementById('productPropCalcuate' + i).innerHTML - 0);
+        }       
+    }
+    document.getElementById('sumTotal').innerHTML = total.toFixed(2);   
+}
+</script>
+
+{% endblock %}

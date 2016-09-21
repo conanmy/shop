@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %}
-  {{ form.as_p }}
 
-  <input type="submit" value="Submit" />
-</form>
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/register.css" %}" />
+
+<img src="{% static "images/login/advertisement.png" %}" alt="Advertisement" />
+<div id="content">
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+
 {% endblock %}
