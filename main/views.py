@@ -37,7 +37,7 @@ def order(request):
     order = Order(
         user=user,
         buyerName=orderInfo['buyerName'],
-        buyerEmail=orderInfo['buyerName'],
+        buyerEmail=orderInfo['buyerEmail'],
         buyerPhoneNumber=orderInfo['buyerPhoneNumber'],
         buyerAddress=orderInfo['buyerAddress']
     )

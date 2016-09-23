@@ -1,72 +1,56 @@
-.header__login-register__login {
-	text-decoration: none;
-	color: black;
-}
-.header__login-register__register {
-	text-decoration: none;
-	color: black;
-}
-.content {
-	width: 100%;
-	margin: 0 auto;
-}
 .search {
-	width: 1090px;
-	margin: 0 auto;
+    width: 1090px;
+    margin: 0 auto;
 }
 .search__searchbox {
-	display: inline-block;
-	height: 30px;
-	width: 600px;
-	vertical-align: middle;
-	margin-top: 20px;
-	margin-bottom: 20px;
+    display: inline-block;
+    height: 30px;
+    width: 600px;
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .list {
-	padding: 10px;
-	width: 1090px;
-	margin: 0 auto;
-	overflow: auto;
-	border-top: 1px dashed #ed145b;
-	border-bottom: 1px dashed #ed145b;
+    padding: 30px 0;
+    overflow: auto;
 }
 .list__product {
-	display: block;
-	width: 225.5px;
-	height: 238px;
-	float: left;
-	border: 1px solid #f2f2f2;
-	text-decoration: none;
-	font-family: Arial, Helvetica, Verdana, Sans-serif;
-	color: black;
-	font-size: 15px;
-	padding: 10px;
-	margin: 10px; 
-	background: white;
+    display: block;
+    width: 225.5px;
+    height: 238px;
+    float: left;
+    border: 1px solid #f2f2f2;
+    text-decoration: none;
+    font-family: Arial, Helvetica, Verdana, Sans-serif;
+    color: black;
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px; 
+    background: white;
 }
 .list a:hover {
-	border: 1px solid #ed145b;
-	box-shadow: 5px 5px #f0f0f0;
+    border: 1px solid #ed145b;
+    box-shadow: 5px 5px #f0f0f0;
 }
 .list__product img {
-	display: block;
-	width: 225.5px;
-	height: 180px;
-	margin: 0 auto;
+    display: block;
+    width: 225.5px;
+    height: 180px;
+    margin: 0 auto;
 }
 .list__product__pr-st {
-	margin-top: 3px;
+    margin-top: 3px;
 }
 .list__product__pr-st__price {
-	color: #ed145b;
-	font-size: 20px;
-	font-weight: 20;
+    color: #ed145b;
+    font-size: 20px;
+    font-weight: 20;
 }
 .list__product__pr-st__stock {
-	float: right;
+    float: right;
 }
 .list__product__description p {
-	font-size: 13px;
-	margin-top: 0px;
-	margin-bottom: 0px;
+    font-size: 13px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }

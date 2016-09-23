@@ -1,42 +1,42 @@
 .header {
-	width: 100%;
-	height: 30px;
-	background: #f2f2f2;
-	line-height: 30px;
-	font-family: Arial, Helvetica, Verdana, Sans-serif;
-	font-size: 15px;
+    width: 100%;
+    height: 30px;
+    background: #f2f2f2;
+    line-height: 30px;
+    font-family: Arial, Helvetica, Verdana, Sans-serif;
+    font-size: 15px;
 }
 .header__details {
-	margin: 0 auto;
-	width: 1090px;
+    margin: 0 auto;
+    width: 1090px;
 }
 .header__logo {
-	display: inline-block;
-	background-image: url("../images/header/logo.png");
-	height: 25px;
-	width: 65px;
-	vertical-align: middle;
+    display: inline-block;
+    background-image: url("../images/header/logo.png");
+    height: 25px;
+    width: 65px;
 }
-.header__login-register {	
-	display: inline-block;
-	float: right;
-	vertical-align: middle;
+.header__login-register {   
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
 }
 .header__username {
-	display: inline-block;
-	float: right;
-	color: #ed145b;
-	vertical-align: middle;
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    color: #ed145b;
+    vertical-align: middle;
 }
 .header__mycart {
-	text-decoration: none;
-	vertical-align: middle;
-	float: right;
-	margin-right: 20px;
-	color: black;
+    text-decoration: none;
+    vertical-align: middle;
+    float: right;
+    margin-right: 20px;
+    color: black;
 }
 .header__mycart:hover {
-	color: #ed145b;
+    color: #ed145b;
 }
 
 

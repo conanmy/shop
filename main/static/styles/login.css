@@ -1,64 +1,41 @@
-.header__login-register__login {
-	text-decoration: none;
-	color: #ed145b;
-}
-.header__login-register__register {
-	text-decoration: none;
-	color: black;
-}
 .content {
-	width: 1090px;
-	margin: 0 auto;
-	overflow: auto;
+    width: 1090px;
+    margin: 0 auto;
+    overflow: auto;
 }
 img {
-	float: left;
-	width: 450px;
-	margin: 120px 50px 80px 100px;
+    float: left;
+    width: 450px;
+    margin: 120px 50px 80px 100px;
 }
 #content {
-	font-size: 15px;
-	font-family: Arial, Helvetica, Verdana, Sans-serif;
-	float: right;
-	margin: 100px 50px;
-	padding: 50px 20px 20px 20px;
-	border: 1px solid white;
-	background: white;
-	box-shadow: 0px 0px 20px #e0e0e0;
+    font-size: 15px;
+    font-family: Arial, Helvetica, Verdana, Sans-serif;
+    float: right;
+    margin: 100px 50px;
+    padding: 50px 20px 20px 20px;
+    border: 1px solid white;
+    background: white;
+    box-shadow: 0px 0px 20px #e0e0e0;
 }
-#content:hover {
-	border: 1px solid #ed145b;
-}
-input {
-	width: 280px;
-	height: 30px;
-	background: #ed145b;
-	margin-top: 10px;
-	margin-bottom: 20px;
+input.button {
+    width: 100%;
 }
 tr {
-	display: block;
-	margin-bottom: 20px;
+    display: block;
+    margin-bottom: 20px;
 }
 label {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 td input {
-	width: 180px;
-	height: 20px;
-	background: white;
-	margin-bottom: 0;
-	margin-top: 0;
+    width: 180px;
+    height: 25px;
+    background: white;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 p {
-	float: right;
-}
-p a {
-	color: black; 
-	text-decoration: none;
-}
-a:hover {
-	color: #ed145b;
-	text-decoration: underline;
+    float: right;
 }
 

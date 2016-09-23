@@ -7,7 +7,7 @@
 
 <form method="post" action="/order/">
     {% csrf_token %}
-    <div class="step">
+    <!--<div class="step">
         <div class="step__title"><a href="/product">Store</a></div>
         <div class="step__tag">
         <img src="{% static "images/cart/step.png" %}" />  
@@ -16,7 +16,7 @@
             <span>Payment</span>
             <span>Choose</span>
         </div>
-    </div>
+    </div>-->
     <div class="cart">
         <div class="cart__title">
             <span class="cart__title__product">Product</span>
@@ -47,43 +47,41 @@
         </div>
         <div class="cart__checkout">
             <div class="cart__checkout__operation">
-            <a class="cart__checkout__operation__continue" href="file:///D:/store/list.html">Continue Shopping</a>  
+            <a class="cart__checkout__operation__continue" href="http://localhost:8000/product/">Continue Shopping</a>  
             </div>
             <div class="cart__checkout__sum">
                 <span>Quantity: <strong id="sumQuantity">3</strong></span>
                 <span>Total: <em>$</em><strong id="sumTotal">30.00</strong></span>
-                <input type="button" value="Pay" />
+                <input class="button" type="button" value="Pay" />
             </div>
         </div>
     </div>
-    <div>
+    <div class="info">
         <p>Name:<input type="text" name="buyerName" /></p>
         <p>Email:<input type="text" name="buyerEmail" /></p>
         <p>Phone:<input type="text" name="buyerPhoneNumber" /></p>
         <p>Address:<input type="text" name="buyerAddress" /></p>
-        <p><input type="submit" value="Submit" /></p>
+        <p class="info__submit"><input type="submit" class="button" value="Submit" /></p>
     </div>
 </form>
 <script>
-var minusButtonArray = document.getElementsByClassName('cart__commodity__product__property__minus');
-var itemNumber = minusButtonArray.length;
+var itemNumber = document.getElementsByClassName('cart__commodity__product__property__minus').length;
+var parent = document.getElementById('cartCommodity');
 for (var i = 0; i < itemNumber; i ++) {
     document.getElementById('countButtonValue' + i).oninput = function(event) {
         var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonValue'.length)));  
         var inputString = valueInput.value; 
         var number = '';
-        for (var i = 0; i < inputString.length; i ++) {         
-            if (!isNaN(inputString.charAt(i))) {                            
-                number = number + inputString.charAt(i);
-            }                       
+        for (var j = 0; j < inputString.length; j ++) {         
+            if (!isNaN(inputString.charAt(j))) {                            
+                number = number + inputString.charAt(j);
+            }
         }
-            document.getElementById('countButtonValue' + (event.target.id.slice('countButtonValue'.length))).value = number;
-            calculateSum();
-            calculateQuantity();
-            calculateTotal();           
+        document.getElementById('countButtonValue' + (event.target.id.slice('countButtonValue'.length))).value = number;
+        calculateSum();
+        calculateQuantity();
+        calculateTotal();
     }
-}
-for (var i = 0; i < itemNumber; i ++) {
     document.getElementById('countButtonMinus' + i).onclick = function(event) {     
         var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonMinus'.length)));
         if (valueInput.value >= 2) {
@@ -93,8 +91,6 @@ for (var i = 0; i < itemNumber; i ++) {
             calculateTotal();           
         }       
     };
-}
-for (var i = 0; i < itemNumber; i ++) {
     document.getElementById('countButtonPlus' + i).onclick = function(event) {
         var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonPlus'.length)));
         valueInput.value = valueInput.value - 0 + 1;
@@ -102,9 +98,6 @@ for (var i = 0; i < itemNumber; i ++) {
         calculateQuantity();
         calculateTotal();       
     };
-}
-var parent = document.getElementById('cartCommodity');
-for (var i = 0; i < itemNumber; i ++) { 
     document.getElementById('productDelete' + i).onclick = function(event) {        
         var child = document.getElementById('cartCommodityProduct'+ (event.target.id.slice('productDelete'.length)));       
         parent.removeChild(child);
@@ -141,6 +134,9 @@ function calculateTotal() {
     }
     document.getElementById('sumTotal').innerHTML = total.toFixed(2);   
 }
+calculateSum();
+calculateQuantity();
+calculateTotal();
 </script>
 
 {% endblock %}

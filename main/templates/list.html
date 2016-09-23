@@ -5,9 +5,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static "styles/list.css" %}" />
 
-<div class="search">
-<input class="search__searchbox" type="search" />
-</div>
 <div class="list">
     {% for product in productList %}
         <a class="list__product" href="{% url 'detail' product.id %}">

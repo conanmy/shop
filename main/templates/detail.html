@@ -32,7 +32,7 @@
             <input type="hidden" name="product_id" value="{{ product.id }}" />
             <div id="attribute" class="product__property__quantity">
             Quantity:<input type="number" name="quantity" value="1" min="1" step="1"><em>(Stock: {{ product.quantity }})</em></div>
-            <div class="product__property__purchase"><input type="submit" value="Add to Cart">
+            <div class="product__property__purchase"><input class="button" type="submit" value="Add to Cart">
         </form>
         <input class="product__property__purchase__service" type="image" src="{% static "images/details/service.png" %}" alt="Service"></div>
     </div>
@@ -62,15 +62,14 @@
     </div>
 </div>
 
-{% endblock %}
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.js"></script>
 <script>
 document.getElementById('productImagesSmall').onmouseover = function(event) {
-    // console.log(event);
     if (event.target.tagName == 'IMG') {
         console.log(event.target.src);
         document.getElementById('bigImg').src = event.target.src;
     }
 };
 </script>
+
+{% endblock %}

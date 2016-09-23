@@ -3,3 +3,30 @@ body{
 	padding: 0;
 	margin: 0;
 }
+.header__login-register__login {
+    text-decoration: none;
+    color: black;
+}
+.header__login-register__register {
+    text-decoration: none;
+    color: black;
+}
+.button {
+    cursor: pointer;
+    height: 36px;
+    color: white;
+    line-height: 36px;
+    padding: 0 50px;
+    background: #ed145b;
+    border-color: #ed145b;
+}
+.content {
+    width: 1090px;
+    margin: 0 auto;
+    overflow: auto;
+    font-family: Arial, Helvetica, Verdana, Sans-serif;
+}
+a:hover {
+    color: #ed145b;
+    text-decoration: underline;
+}
