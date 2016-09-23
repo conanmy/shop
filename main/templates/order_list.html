@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static "styles/order_list.css" %}" />
+<h2>Order List</h2>
+<div class="list">
+    {% for order in orderList %}
+        <p>{{ order.buyerName}} {{ order.date}} OrderId:{{ order.id}}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

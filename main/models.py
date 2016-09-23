@@ -2,8 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Order(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User)
+    date = models.DateField(auto_now_add=True)
+    buyerName = models.CharField(max_length=100)
+    buyerEmail = models.CharField(max_length=100)
+    buyerPhoneNumber = models.CharField(max_length=100)
+    buyerAddress = models.CharField(max_length=100)
+
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
+    user = models.ManyToManyField(User, through='Cart')
+    order = models.ManyToManyField(Order, through='Record')
     inputPerson_id = models.IntegerField()
     inputDate = models.DateField()
     newProduct = models.CharField(max_length=100)
@@ -23,20 +34,13 @@ class Product(models.Model):
     productPicture2 = models.CharField(max_length=100)
     productPicture3 = models.CharField(max_length=100)
 
+
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User)
-    product = models.ForeignKey(Product)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
-class Order(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User)
-    date = models.DateField(auto_now_add=True)
-    buyerName = models.CharField(max_length=100)
-    buyerEmail = models.CharField(max_length=100)
-    buyerPhoneNumber = models.CharField(max_length=100)
-    buyerAddress = models.CharField(max_length=100)
 
 class Record(models.Model):
     id = models.AutoField(primary_key=True)

@@ -43,6 +43,7 @@ def order(request):
     )
     order.save()
     cart_item_id_prefix = 'cart_item-'
+    recordList = []
     for attr, value in request.POST.items():
         if attr.startswith(cart_item_id_prefix):
             product = Product.objects.get(id=int(attr[len(cart_item_id_prefix):]))
@@ -54,5 +55,11 @@ def order(request):
                 quantity=value
             )
             record.save()
-    return render(request, 'order_success.html')
+            recordList.append(record)
+    user.product_set.clear()
+    return render(request, 'order_success.html', {'recordList': recordList })
 
+@login_required()
+def orders(request):
+    user = User.objects.get(id=request.user.id)
+    return render(request, 'order_list.html', {'orderList': user.order_set.all() })

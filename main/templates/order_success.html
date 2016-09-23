@@ -2,6 +2,12 @@
 
 {% block content %}
 
+<ul>
+{% for record in recordList %}
+<li>{{ record.product.productName }}*{{ record.quantity }}</li>
+{% endfor %}
+</ul>
+
 Submit success.
 
 {% endblock %}
