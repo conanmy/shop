@@ -19,24 +19,17 @@
 .header__login-register {   
     display: inline-block;
     float: right;
-    vertical-align: middle;
 }
 .header__username {
     display: inline-block;
     float: right;
     margin-right: 20px;
-    color: #ed145b;
-    vertical-align: middle;
 }
 .header__mycart {
-    text-decoration: none;
-    vertical-align: middle;
     float: right;
     margin-right: 20px;
-    color: black;
 }
-.header__mycart:hover {
-    color: #ed145b;
+.header__logout {
+    float: right;
 }
-
 

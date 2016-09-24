@@ -26,6 +26,9 @@ body{
     overflow: auto;
     font-family: Arial, Helvetica, Verdana, Sans-serif;
 }
+a {
+    text-decoration: none;
+}
 a:hover {
     color: #ed145b;
     text-decoration: underline;

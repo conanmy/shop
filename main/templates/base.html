@@ -9,16 +9,20 @@
 </head>
 <body>
 <div class="header">
-<div class="header__details">
-<div class="header__logo"></div>
-<div class="header__login-register">
-<a class="header__login-register__login" href="/login">Login</a>
-<span class="header__login-register__vline">|</span>
-<a class="header__login-register__register" href="/register">Register</a>
-</div>
-<a class="header__username" href="/orders">Username</a>
-<a class="header__mycart" href="/cart">My Cart</a>
-</div>
+    <div class="header__details">
+        <a class="header__logo" href="/"></a>
+        {% if request.user.is_authenticated %}
+        <a class="header__logout" href="/logout">Logout</a>
+        <a class="header__username" href="/orders">{{ request.user.username }}</a>
+        {% else %}
+        <div class="header__login-register">
+            <a class="header__login-register__login" href="/login">Login</a>
+            <span class="header__login-register__vline">|</span>
+            <a class="header__login-register__register" href="/register">Register</a>
+        </div>
+        {% endif %}
+        <a class="header__mycart" href="/cart">My Cart</a>
+    </div>
 </div>
 <div class="content">{% block content %}{% endblock %}</div>
 <div class="footer"><em>Store</em></div>
