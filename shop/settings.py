@@ -133,3 +133,8 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL= '/product'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
