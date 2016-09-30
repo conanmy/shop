@@ -134,6 +134,8 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL= '/product'
 
+LOGIN_URL = '/login'
+
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
