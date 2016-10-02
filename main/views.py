@@ -32,7 +32,6 @@ def cart(request):
 
 @login_required()
 def cart_delete(request):
-    pdb.set_trace()
     cartItem = Cart.objects.get(id=request.POST['cart_item_id'])
     cartItem.delete()
     return HttpResponse('Success')
