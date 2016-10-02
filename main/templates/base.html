@@ -24,6 +24,20 @@
         <a class="header__mycart" href="/cart">My Cart</a>
     </div>
 </div>
+<script>
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            var csrftoken = Cookies.get('csrftoken');
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+</script>
 <div class="content">{% block content %}{% endblock %}</div>
 <div class="footer"><em>Store</em></div>
 </body>
