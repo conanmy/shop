@@ -31,6 +31,13 @@ def cart(request):
         return render(request, 'cart.html', {'cartItems': cartItems})
 
 @login_required()
+def cart_delete(request):
+    pdb.set_trace()
+    cartItem = Cart.objects.get(id=request.POST['cart_item_id'])
+    cartItem.delete()
+    return HttpResponse('Success')
+
+@login_required()
 def order(request):
     orderInfo = request.POST
     user = User.objects.get(id=request.user.id)

@@ -32,7 +32,9 @@
             <div id="cartCommodityProduct{{ forloop.counter0 }}" class="cart__commodity__product">
                 <a class="cart__commodity__product__image" href="/product/{{item.product.id}}"><img src="{% static "images/cart/sketch.png" %}"></a>
                 <a class="cart__commodity__product__sketch" href="/product/{{item.product.id}}"><strong>{{ item.product.productName }}</strong><br />{{ item.product.description }}</a>
-                <span class="cart__commodity__product__delete"><input id="productDelete{{ forloop.counter0 }}" type="image" src="{% static "images/cart/delete.png" %}"></span>
+                <span class="cart__commodity__product__delete">
+                    <input id="productDelete{{ forloop.counter0 }}" cart-item-id="{{item.id}}" type="image" src="{% static "images/cart/delete.png" %}">
+                </span>
                 <div class="cart__commodity__product__property">        
                     <div id="productPropUnit{{ forloop.counter0 }}" class="cart__commodity__product__property__unit">{{ item.product.retailPrice }}</div>
                     <div class="cart__commodity__product__property__count">
@@ -64,6 +66,8 @@
         <p class="info__submit"><input type="submit" class="button" value="Submit" /></p>
     </div>
 </form>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js
+"></script>
 <script>
 var itemNumber = document.getElementsByClassName('cart__commodity__product__property__minus').length;
 var parent = document.getElementById('cartCommodity');
@@ -88,8 +92,8 @@ for (var i = 0; i < itemNumber; i ++) {
             valueInput.value = valueInput.value - 1;
             calculateSum();
             calculateQuantity();
-            calculateTotal();           
-        }       
+            calculateTotal();
+        }
     };
     document.getElementById('countButtonPlus' + i).onclick = function(event) {
         var valueInput = document.getElementById('countButtonValue' + (event.target.id.slice('countButtonPlus'.length)));
@@ -99,11 +103,12 @@ for (var i = 0; i < itemNumber; i ++) {
         calculateTotal();       
     };
     document.getElementById('productDelete' + i).onclick = function(event) {        
-        var child = document.getElementById('cartCommodityProduct'+ (event.target.id.slice('productDelete'.length)));       
+        var child = document.getElementById('cartCommodityProduct'+ (event.target.id.slice('productDelete'.length)));
         parent.removeChild(child);
         calculateQuantity();
         calculateTotal();
-        
+        var cartItemId = event.target.attributes['cart-item-id'].value - 0;
+        $.post('/cart/delete', {'cart_item_id': cartItemId});
     };
 }
 function calculateSum() {
